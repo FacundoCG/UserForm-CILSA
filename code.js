@@ -63,7 +63,8 @@ function validacion() {
     dateOfBirth = document.getElementById('dateOfBirth').value;
     password = document.getElementById('password').value;
     passwordRepeated = document.getElementById('passwordRepeated').value;
-    
+
+    console.log(dateOfBirth);
     isValid = true;
 
     if (!isUsernameValid(username)){
