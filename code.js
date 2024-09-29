@@ -36,8 +36,13 @@ function isPasswordValid(aPassword, anotherPassword) {
     if (aPassword === null || aPassword.length == 0) {
         res = false;
         showError('passwordError', "La contraseña no puede estar vacía");
+
+        if (aPassword === anotherPassword) {
+            hideError('passwordRepeatedError');
+        }
     } else if (aPassword !== anotherPassword) {
         res = false;
+        hideError('passwordError');
         showError('passwordRepeatedError', "Las contraseñas no son iguales");
     } else {
         hideError('passwordError');
