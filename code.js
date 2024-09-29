@@ -9,6 +9,10 @@ function hideError(id) {
     errorElement.style.visibility = 'hidden';
 }
 
+function isAdult(age, monthDifference, dayDifference){
+    return !(age < 18 || (age === 18 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0))));
+}
+
 function isEmailValid(anEmail) {
     res = true;
     if (anEmail === null || anEmail.length === 0) {
@@ -53,9 +57,18 @@ function isPasswordValid(aPassword, anotherPassword) {
 
 function isDateValid(aDate) {
     res = true;
+    today = new Date();
+    birthDate = new Date(aDate);
+    age = today.getFullYear() - birthDate.getFullYear();
+    monthDifference = today.getMonth() - birthDate.getMonth();
+    dayDifference = today.getDate() - birthDate.getDate();
+    
     if (aDate === null || aDate.length === 0) {
         res = false;
         showError('dateOfBirthError', "La fecha de nacimiento no puede estar vacía");
+    } else if (!isAdult(age, monthDifference, dayDifference)){
+        res = false;
+        showError('dateOfBirthError', "Debe ser mayor de 18 años");
     } else {
         hideError('dateOfBirthError');
     }
