@@ -64,7 +64,6 @@ function validacion() {
     password = document.getElementById('password').value;
     passwordRepeated = document.getElementById('passwordRepeated').value;
 
-    console.log(dateOfBirth);
     isValid = true;
 
     if (!isUsernameValid(username)){
